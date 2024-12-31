@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   stamp.src = "../images/stamp.png";
   stamp2.src = "../images/توثيق العقد بنان 1.png";
   EmployeeSignature.src = "../images/Signature_08.png";
-  TenantSignature.src = "../images/Signature_36.png";
+  TenantSignature.src = "../images/Signature_09.png";
 
   let texts = [
     { 
