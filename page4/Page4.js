@@ -13,11 +13,11 @@ async function CreateReceiptPdf() {
   // الصور
     images: {
       background: "page4 (2).png",
-      EMPLOYEE_SIGN: "../../images/Signature_08.png",
-      TENANT_SIGN: "../../images/Signature_08.png",
-      QR: "../../images/verificationT.svg",
-      STAMP: "../../images/Stamp.png",
-      Authentication_STAMP: "../../images/ختم توثيق بنان.png",
+      EMPLOYEE_SIGN: "../images/Signature_08.png",
+      TENANT_SIGN: "../images/Signature_08.png",
+      QR: "../images/verificationT.svg",
+      STAMP: "../images/Stamp.png",
+      Authentication_STAMP: "../images/ختم توثيق بنان.png",
     },
     // عناصر الجدول 
     Inspection_Items: [
@@ -280,6 +280,7 @@ drawItems(data.Rececipt_Notes, canvas.width - 1780, startY_Notes, "right");
 
 
 };
+
 
 
 
