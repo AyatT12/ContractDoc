@@ -1,522 +1,275 @@
-let canvas_width = 2481;
+async function CreateContract() {
+  const accountReceiptNo = "123456";
+  const canvas = document.getElementById("myCanvas");
+  const dynamicData = {
+      NUMBER: "2490667684810001",
+      CONTRACT_NUMBER: "24-1401-4001102-000109",
+      TENANT_NAME_AR: "حصة سامي عبدالمحسن الصمعاني",
+      TENANT_NAME_EN: "Hassa Samy Ablulmohsen AlSamaany",
+      TENANT_ID: "802843632831352",
+      TENANT_TAX_NUM: "328774964423",
+      TENANT_EMAIL: "hassa63587@gmail.com",
+      TENANT_ADDRESS_AR: "مكة المكرمة - السديره",
+      TENANT_ADDRESS_EN: "Makkah Al-Mukarramah - Al Sudayrah",
+      TENANT_Notes: "ملاحظات المستأجر",
 
-let loadImageOnCanvasAndThenWriteText = (
-  canvas,
-  imageUrl,
-  texts,
-  textStyleOptions,
-  Images
-) => {
-  let ctx = canvas.getContext("2d");
-  ctx.direction = "ltr";
+      DRIVER_NAME_AR: "حصة سامي عبدالمحسن الصمعاني",
+      DRIVER_NAME_EN: "Hassa Samy Ablulmohsen AlSamaany",
+      DRIVER_ID: "802843632831352",
+      DRIVER_ID_TYPE_AR: "قومية",
+      DRIVER_ID_TYPE_EN: "Nationalism",
+      DRIVER_VERSION_NUM: "512",
+      DRIVER_BIRTH_DATE: "1998/01/01",
+      DRIVER_GENDER_AR: "أنثى",
+      DRIVER_GENDER_EN: "Female",
+      DRIVER_NATIONALITY_AR: "سعودي/ة",
+      DRIVER_NATIONALITY_EN: "Saudi",
+      DRIVER_LICENSE: "9658743131",
+      DRIVER_VEHICLE_TYPE_AR: "دراجة نارية",
+      DRIVER_VEHICLE_TYPE_EN: "Motorcycle",
+      DRIVER_LICENSE_EXPIRY: "2026/11/17",
+      DRIVER_POSITION_AR: "معلم/ة",
+      DRIVER_POSITION_EN: "Teacher",
+      DRIVER_WORKPLACE_AR: "وزارة الاتصالات و تقنية المعلومات",
+      DRIVER_WORKPLACE_EN: "Ministry of communication and information technology",
+      DRIVER_EMAIL: "hassa63587@gmail.com",
+      DRIVER_ADDRESS_AR: "مكة المكرمة - السديره",
+      DRIVER_ADDRESS_EN: "Makkah Al-Mukarramah - Al Sudayrah",
+      DRIVER_Notes: "ملاحظات السائق",
 
-  let img = new Image();
+      ADDITIONAL_DRIVER_NAME_AR: "حصة سامي عبدالمحسن الصمعاني",
+      ADDITIONAL_DRIVER_NAME_EN: "Hassa Samy Ablulmohsen AlSamaany",
+      ADDITIONAL_DRIVER_ID: "802843632831352",
+      ADDITIONAL_DRIVER_IDTYPE_AR: "قومية",
+      ADDITIONAL_DRIVER_IDTYPE_EN: "Nationalism",
+      ADDITIONAL_DRIVER_VERSION: "512",
+      ADDITIONAL_DRIVER_BIRTH_DATE: "1998/01/01",
+      ADDITIONAL_DRIVER_GENDER_AR: "أنثى",
+      ADDITIONAL_DRIVER_GENDER_EN: "Female",
+      ADDITIONAL_DRIVER_NATIONALITY_AR: "سعودي/ة",
+      ADDITIONAL_DRIVER_NATIONALITY_EN: "Saudi",
+      ADDITIONAL_DRIVER_LICENSE: "9658743131",
+      ADDITIONAL_DRIVER_VEHICLE_TYPE_AR: "دراجة نارية",
+      ADDITIONAL_DRIVER_VEHICLE_TYPE_EN: "Motorcycle",
+      ADDITIONAL_DRIVER_LICENSE_EXPIRY: "2026/11/17",
+      ADDITIONAL_DRIVER_POSITION_AR: "معلم/ة",
+      ADDITIONAL_DRIVER_POSITION_EN: "Teacher",
+      ADDITIONAL_DRIVER_WORKPLACE_AR: "وزارة الاتصالات و تقنية المعلومات",
+      ADDITIONAL_DRIVER_WORKPLACE_EN: "Ministry of communication and information technology",
+      ADDITIONAL_DRIVER_EMAIL: "hassa63587@gmail.com",
+      ADDITIONAL_DRIVER_ADDRESS_AR: "مكة المكرمة - السديره",
+      ADDITIONAL_DRIVER_ADDRESS_EN: "Makkah Al-Mukarramah - Al Sudayrah",
+      ADDITIONAL_DRIVER_Notes: "ملاحظات السائق الاضافي",
 
-  img.onload = () => {
-    let loadedImageWidth = img.width;
-    let loadedImageHeight = img.height;
+      PRIVATE_DRIVER_NAME_AR: "حصة سامي عبدالمحسن الصمعاني",
+      PRIVATE_DRIVER_NAME_EN: "Hassa Samy Ablulmohsen AlSamaany",
+      PRIVATE_DRIVER_ID: "802843632831352",
+      PRIVATE_DRIVER_ID_TYPE_AR: "قومية",
+      PRIVATE_DRIVER_ID_TYPE_EN: "Nationalism",
+      PRIVATE_DRIVER_NATIONALITY: "سعودي/ة",
+      PRIVATE_DRIVER_NATIONALITY_EN: "Saudi",
+      PRIVATE_DRIVER_LICENSE: "9658743131",
+      PRIVATE_DRIVER_VEHICLE_TYPE_AR: "دراجة نارية",
+      PRIVATE_DRIVER_VEHICLE_TYPE_EN: "Motorcycle",
+      PRIVATE_DRIVER_LICENSE_EXPIRY: "2026/11/17",
 
-    canvas.width = loadedImageWidth;
-    canvas.height = loadedImageHeight;
-
-    ctx.drawImage(img, 0, 0);
-
-    texts.forEach((text) => {
-      // Use individual font size and color if provided, or fallback to default
-      const fontSize = text.fontSize || textStyleOptions.fontSize;
-      const fontColor = text.color || textStyleOptions.textColor;
-      const fontWeight = text.fontWeight || textStyleOptions.fontWeight;
-      const fontFamily = text.fontFamily || textStyleOptions.fontFamily;
-
-      ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-      ctx.fillStyle = fontColor;
-
-      let textWidth = ctx.measureText(text.content).width;
-
-      let x = text.x;
-
-      const align = text.align || textStyleOptions.textAlign;
-
-      if (align === "right") {
-        x -= textWidth;
-      } else if (align === "center") {
-        x -= textWidth / 2;
-      }
-
-      ctx.fillText(text.content, x, text.y);
-    });
-
-    Images.forEach((Image) => {
-      ctx.drawImage(Image.content, Image.x, Image.y, Image.width, Image.height);
-    });
-
-    let base64Link = canvas.toDataURL("image/png");
-    console.log(base64Link);
+      SIGNATURE_AR: "عمير رضا عمير مجدي",
+      SIGNATURE_EN: "Omir Reda Omir Magdy",
+        images: {
+              background: "Page2 (2).png",
+              EMPLOYEE_SIGN: "../../images/Signature_08.png",
+              TENANT_SIGN: "../../images/Signature_08.png",
+              QR: "../../images/verificationT.svg",
+              STAMP: "../../images/Stamp.png",
+              Authentication_STAMP: "../../images/ختم توثيق بنان.png",
+      },
   };
-
-  img.src = imageUrl;
+  const loadedImages = await loadDynamicImages(dynamicData.images);
+  const dataWithImages = { ...dynamicData, images: loadedImages };
+  console.log("dataWithImages",dataWithImages);
+  await DrawContract(canvas, dataWithImages);
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  let theCanvas = document.getElementById("myCanvas");
 
-  let imageUrl = "page2 (3).png";
-  var QrImg = new Image();
-  var stamp = new Image();
-  var stamp2 = new Image();
-  var EmployeeSignature = new Image();
-  var TenantSignature = new Image();
 
-  QrImg.src = "../images/BenanQR.png";
-  stamp.src = "../images/stamp.png";
-  stamp2.src = "../images/توثيق العقد بنان 1.png";
-  EmployeeSignature.src = "../images/Signature_08.png";
-  TenantSignature.src = "../images/Signature_09.png";
 
-  let texts = [
-    {
-      content: "2490667684810001",
-      x: canvas_width - 2360,
-      y: 358,
-      align: "left",
-      color: "#0D5485",
-      fontSize: 40,
-      fontWeight: "700",
-    },
-    {
-      content: "24-1401-4001102-000109",
-      x: canvas_width - 2420,
-      y: 410,
-      align: "left",
-      color: "#0D5485",
-      fontSize: 45,
-      fontWeight: "700",
-    },
-    // المستأجر //
-    {
-      content: "حصة سامي عبدالمحسن الصمعاني",
-      x: canvas_width - 420,
-      y: 515,
-      color: "#0D5485",
-      fontSize: 50,
-      fontWeight: "600",
-    },
-    {
-      content: "Hassa Samy Ablulmohsen AlSamaany",
-      x: canvas_width - 420,
-      y: 590,
-      color: "#0D5485",
-      fontSize: 45,
-      fontWeight: "600",
-    },
-    {
-      content: "802843632831352",
-      x: canvas_width - 518,
-      y: 677,
-    },
-    {
-      content: "328774964423",
-      x: canvas_width - 1210,
-      y: 677,
-    },
-    {
-      content: "hassa63587@gmail.com",
-      x: canvas_width - 1730,
-      y: 677,
-    },
-    {
-      content: "مكة المكرمة - السديره",
-      x: canvas_width - 535,
-      y: 762,
-      fontSize: 40,
-    },
-    {
-      content: "Makkah Al-Mukarramah -  Al Sudayrah",
-      x: canvas_width - 535,
-      y: 805,
-    },
-    // السائق //
-    {
-      content: "حصة سامي عبدالمحسن الصمعاني",
-      x: canvas_width - 420,
-      y: 920,
-      color: "#0D5485",
-      fontSize: 50,
-      fontWeight: "600",
-    },
-    {
-      content: "Hassa Samy Ablulmohsen AlSamaany",
-      x: canvas_width - 420,
-      y: 995,
-      color: "#0D5485",
-      fontSize: 45,
-      fontWeight: "600",
-    },
-    ,
-    {
-      content: "802843632831352",
-      x: canvas_width - 518,
-      y: 1082,
-    },
-    {
-      content: "قومية",
-      x: canvas_width - 1167,
-      y: 1067,
-      fontSize: 40,
-    },
-    {
-      content: "Nationalism",
-      x: canvas_width - 1167,
-      y: 1104,
-    },
-    {
-      content: "512",
-      x: canvas_width - 1800,
-      y: 1082,
-    },
-    {
-      content: "01/12/1998",
-      x: canvas_width - 575,
-      y: 1182,
-    },
-    {
-      content: "أنثى",
-      x: canvas_width - 1120,
-      y: 1167,
-      fontSize: 40,
-    },
-    {
-      content: "Female",
-      x: canvas_width - 1120,
-      y: 1205,
-    },
-    {
-      content: "سعودي/ة",
-      x: canvas_width - 1775,
-      y: 1167,
-      fontSize: 40,
-    },
-    {
-      content: "Saudi",
-      x: canvas_width - 1775,
-      y: 1205,
-    },
-    {
-      content: "9658743131",
-      x: canvas_width - 655,
-      y: 1290,
-    },
-    {
-      content: "دراجة نارية",
-      x: canvas_width - 1270,
-      y: 1278,
-      fontSize: 40,
-    },
-    {
-      content: "Motorcycle",
-      x: canvas_width - 1270,
-      y: 1316,
-    },
-    {
-      content: "17/11/2026",
-      x: canvas_width - 1750,
-      y: 1290,
-    },
-    {
-      content: "معلم/ة",
-      x: canvas_width - 545,
-      y: 1377,
-      fontSize: 40,
-    },
-    {
-      content: "Teacher",
-      x: canvas_width - 545,
-      y: 1415,
-    },
-    ,
-    {
-      content: "وزارة التعليم",
-      x: canvas_width - 1175,
-      y: 1377,
-      fontSize: 40,
-    },
-    {
-      content: "Ministry of Education",
-      x: canvas_width - 1175,
-      y: 1415,
-    },
-    ,
-    {
-      content: "hassa63587@gmail.com",
-      x: canvas_width - 1730,
-      y: 1395,
-    },
-    {
-      content: "مكة المكرمة - السديره",
-      x: canvas_width - 535,
-      y: 1480,
-      fontSize: 40,
-    },
-    {
-      content: "Makkah Al-Mukarramah -  Al Sudayrah",
-      x: canvas_width - 535,
-      y: 1520,
-    },
-    // السائق الاضافي //
-    {
-      content: "حصة سامي عبدالمحسن الصمعاني",
-      x: canvas_width - 420,
-      y: 1640,
-      color: "#0D5485",
-      fontSize: 50,
-      fontWeight: "600",
-    },
-    {
-      content: "Hassa Samy Ablulmohsen AlSamaany",
-      x: canvas_width - 420,
-      y: 1710,
-      color: "#0D5485",
-      fontSize: 45,
-      fontWeight: "600",
-    },
-    {
-      content: "802843632831352",
-      x: canvas_width - 518,
-      y: 1797,
-    },
-    {
-      content: "قومية",
-      x: canvas_width - 1167,
-      y: 1777,
-      fontSize: 40,
-    },
-    {
-      content: "Nationalism",
-      x: canvas_width - 1167,
-      y: 1815,
-    },
-    {
-      content: "512",
-      x: canvas_width - 1800,
-      y: 1797,
-    },
-    {
-      content: "01/12/1998",
-      x: canvas_width - 575,
-      y: 1900,
-    },
-    {
-      content: "أنثى",
-      x: canvas_width - 1120,
-      y: 1885,
-      fontSize: 40,
-    },
-    {
-      content: "Female",
-      x: canvas_width - 1120,
-      y: 1920,
-    },
-    {
-      content: "سعودي/ة",
-      x: canvas_width - 1775,
-      y: 1885,
-      fontSize: 40,
-    },
-    {
-      content: "Saudi",
-      x: canvas_width - 1775,
-      y: 1920,
-    },
-    {
-      content: "9658743131",
-      x: canvas_width - 655,
-      y: 2005,
-    },
-    {
-      content: "دراجة نارية",
-      x: canvas_width - 1270,
-      y: 1995,
-      fontSize: 40,
-    },
-    {
-      content: "Motorcycle",
-      x: canvas_width - 1270,
-      y: 2032,
-    },
-    {
-      content: "17/11/2026",
-      x: canvas_width - 1750,
-      y: 2005,
-    },
-    {
-      content: "معلم/ة",
-      x: canvas_width - 545,
-      y: 2095,
-      fontSize: 40,
-    },
-    {
-      content: "Teacher",
-      x: canvas_width - 545,
-      y: 2130,
-    },
-    ,
-    {
-      content: "وزارة التعليم",
-      x: canvas_width - 1175,
-      y: 2095,
-      fontSize: 40,
-    },
-    {
-      content: "Ministry of Education",
-      x: canvas_width - 1175,
-      y: 2130,
-    },
-    ,
-    {
-      content: "hassa63587@gmail.com",
-      x: canvas_width - 1730,
-      y: 2110,
-    },
-    {
-      content: "مكة المكرمة - السديره",
-      x: canvas_width - 535,
-      y: 2199,
-      fontSize: 40,
-    },
-    {
-      content: "Makkah Al-Mukarramah -  Al Sudayrah",
-      x: canvas_width - 535,
-      y: 2235,
-    },
-    // سائق خاص  //
-    {
-      content: "حصة سامي عبدالمحسن الصمعاني",
-      x: canvas_width - 420,
-      y: 2355,
-      color: "#0D5485",
-      fontSize: 50,
-      fontWeight: "600",
-    },
-    {
-      content: "Hassa Samy Ablulmohsen AlSamaany",
-      x: canvas_width - 420,
-      y: 2430,
-      color: "#0D5485",
-      fontSize: 45,
-      fontWeight: "600",
-    },
-    {
-      content: "802843632831352",
-      x: canvas_width - 518,
-      y: 2510,
-    },
-    {
-      content: "قومية",
-      x: canvas_width - 1167,
-      y: 2490,
-      fontSize: 40,
-    },
-    {
-      content: "Nationalism",
-      x: canvas_width - 1167,
-      y: 2530,
-    },
-    {
-      content: "سعودي/ة",
-      x: canvas_width - 1775,
-      y: 2490,
-      fontSize: 40,
-    },
-    {
-      content: "Saudi",
-      x: canvas_width - 1775,
-      y: 2530,
-    },
-    {
-      content: "9658743131",
-      x: canvas_width - 655,
-      y: 2620,
-    },
-    {
-      content: "دراجة نارية",
-      x: canvas_width - 1270,
-      y: 2610,
-      fontSize: 40,
-    },
-    {
-      content: "Motorcycle",
-      x: canvas_width - 1270,
-      y: 2645,
-    },
-    {
-      content: "17/11/2026",
-      x: canvas_width - 1750,
-      y: 2620,
-    },
-    // التوقيع //
-    {
-      content: "عمير رضا عمير مجدي",
-      x: canvas_width - 280,
-      y: 2830,
-      fontSize: 40,
-    },
-    {
-      content: "Omir Reda Omir Magdy",
-      x: canvas_width - 280,
-      y: 2870,
-    },
-  ];
+const loadDynamicImages = async (images) => {
+const loadedImages = {};
+for (const [key, src] of Object.entries(images)) {
+  try {
+      loadedImages[key] = await loadImage(src);
+  } catch (error) {
+      console.warn(`Using fallback for: ${key}`);
+      console.warn(`Using fallback for src: ${src}`);
+      loadedImages[key] = null; // استخدم null أو صورة افتراضية
+  }
+}
+return loadedImages;
+};
 
-  let Images = [
-    {
-      content: QrImg,
-      x: canvas_width - 2435,
-      y: 2800,
-      width: 200,
-      height: 200,
-    },
-    {
-      content: EmployeeSignature,
-      x: canvas_width - 670,
-      y: 2790,
-      width: 150,
-      height: 150,
-    },
-    {
-      content: TenantSignature,
-      x: canvas_width - 500,
-      y: 2880,
-      width: 150,
-      height: 150,
-    },
-    { content: stamp, x: canvas_width - 725, y: 2810, width: 150, height: 150 },
-    {
-      content: stamp2,
-      x: canvas_width - 545,
-      y: 2905,
-      width: 150,
-      height: 150,
-    },
-  ];
-
-  let textStyleOptions = {
-    fontWeight: "normal",
-    fontSize: 35,
-    fontFamily: "Sakkal Majalla Regular",
-    textColor: "#000000",
-    textAlign: "right",
+const loadImage = (src) => {
+return new Promise((resolve, reject) => {
+  const img = new Image();
+  img.onload = () => resolve(img);
+  img.onerror = (error) => {
+      console.error(`Failed to load image: ${src}`, error);
+      reject(error);
   };
-
-  // Ensure the font is loaded
-  document.fonts
-    .load(`normal 35px "${textStyleOptions.fontFamily}"`)
-    .then(() => {
-      loadImageOnCanvasAndThenWriteText(
-        theCanvas,
-        imageUrl,
-        texts,
-        textStyleOptions,
-        Images
-      );
-    });
+  img.src = src;
 });
+};
+
+// رسم العقد على الـ Canvas
+const DrawContract = async (canvas, data) => {
+console.log("Start DrawContract");
+const ctx = canvas.getContext("2d");
+
+// ضبط أبعاد الـ canvas
+const backgroundImg = data.images.background;
+canvas.width = 2481;
+canvas.height = backgroundImg.height;
+ctx.drawImage(backgroundImg, 0, 0);
+
+// إعداد النصوص والصور
+const fixedConfig = {
+  texts: [
+    { key: "NUMBER", x: canvas.width - 2360, y: 358, align: "left", color: "#0D5485", fontSize: 40, fontWeight: "700" },
+    { key: "CONTRACT_NUMBER", x: canvas.width - 2420, y: 405, align: "left", color: "#0D5485", fontSize: 45, fontWeight: "700" },
+    // المستأجر //
+    { key: "TENANT_NAME_AR", x: canvas.width - 420, y: 510, color: "#0D5485", fontSize: 50, fontWeight: "600", align: "right" },
+    { key: "TENANT_NAME_EN", x: canvas.width - 420, y: 570, color: "#0D5485", fontSize: 40, fontWeight: "600", align: "right" },
+    { key: "TENANT_ID", x: canvas.width - 518, y: 667 , align: "right" },
+    { key: "TENANT_TAX_NUM", x: canvas.width - 1210, y: 667 , align: "right"},
+    { key: "TENANT_EMAIL", x: canvas.width - 1730, y: 667 , align: "right"},
+    { key: "TENANT_ADDRESS_AR", x: canvas.width - 535, y: 740, fontSize: 40 , align: "right"},
+    { key: "TENANT_ADDRESS_EN", x: canvas.width - 535, y: 775, align: "right" },
+    { key: "TENANT_Notes", x: canvas.width - 535, y: 845, fontSize: 40 , align: "right"},
+    // السائق //
+    { key: "DRIVER_NAME_AR", x: canvas.width - 420, y: 970, color: "#0D5485", fontSize: 50, fontWeight: "600" , align: "right"},
+    { key: "DRIVER_NAME_EN", x: canvas.width - 420, y: 1030, color: "#0D5485", fontSize: 40, fontWeight: "600", align: "right" },
+    { key: "DRIVER_ID", x: canvas.width - 518, y: 1120 , align: "right" },
+    { key: "DRIVER_ID_TYPE_AR", x: canvas.width - 1167, y: 1105, fontSize: 40 , align: "right"},
+    { key: "DRIVER_ID_TYPE_EN", x: canvas.width - 1167, y: 1145 , align: "right" },
+    { key: "DRIVER_VERSION_NUM", x: canvas.width - 1810, y: 1120 , align: "right"},
+    { key: "DRIVER_BIRTH_DATE", x: canvas.width - 580, y: 1220  , align: "right"},
+    { key: "DRIVER_GENDER_AR", x: canvas.width - 1130, y: 1200, fontSize: 40 , align: "right"  },
+    { key: "DRIVER_GENDER_EN", x: canvas.width - 1130, y: 1235  , align: "right"},
+    { key: "DRIVER_NATIONALITY_AR", x: canvas.width - 1785, y: 1195, fontSize: 40 , align: "right"},
+    { key: "DRIVER_NATIONALITY_EN", x: canvas.width - 1785, y: 1235  , align: "right"},
+    { key: "DRIVER_LICENSE", x: canvas.width - 655, y: 1310 , align: "right"},
+    { key: "DRIVER_VEHICLE_TYPE_AR", x: canvas.width - 1270, y: 1290, fontSize: 40 , align: "right"},
+    { key: "DRIVER_VEHICLE_TYPE_EN", x: canvas.width - 1270, y: 1325 , align: "right"},
+    { key: "DRIVER_LICENSE_EXPIRY", x: canvas.width - 1835, y: 1310 , align: "right"},
+    { key: "DRIVER_POSITION_AR", x: canvas.width - 555, y: 1380, fontSize: 40 , align: "right"},
+    { key: "DRIVER_POSITION_EN", x: canvas.width - 555, y: 1420, align: "right"},
+    { key: "DRIVER_WORKPLACE_AR", x: canvas.width - 1175, y: 1385, fontSize: 40 , align: "right"},
+    { key: "DRIVER_WORKPLACE_EN", x: canvas.width - 1175, y: 1425 , align: "right" },
+    { key: "DRIVER_EMAIL", x: canvas.width - 1730, y: 1400 , align: "right"},
+    { key: "DRIVER_ADDRESS_AR", x: canvas.width - 535, y: 1480, fontSize: 40 , align: "right"},
+    { key: "DRIVER_ADDRESS_EN", x: canvas.width - 535, y: 1520 , align: "right"},
+    { key: "DRIVER_Notes", x: canvas.width - 535, y: 1585, fontSize: 40 , align: "right"},
+
+    // السائق الاضافي //
+    { key: "ADDITIONAL_DRIVER_NAME_AR", x: canvas.width - 420, y: 1710, color: "#0D5485", fontSize: 50, fontWeight: "600" , align: "right" },
+    { key: "ADDITIONAL_DRIVER_NAME_EN", x: canvas.width - 420, y: 1770, color: "#0D5485", fontSize: 45, fontWeight: "600" , align: "right"},
+    { key: "ADDITIONAL_DRIVER_ID", x: canvas.width - 518, y: 1870 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_IDTYPE_AR", x: canvas.width - 1167, y: 1850, fontSize: 40 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_IDTYPE_EN", x: canvas.width - 1167, y: 1885 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_VERSION", x: canvas.width - 1810, y: 1870 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_BIRTH_DATE", x: canvas.width - 575, y: 1960 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_GENDER_AR", x: canvas.width - 1130, y: 1945, fontSize: 40 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_GENDER_EN", x: canvas.width - 1130, y: 1975 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_NATIONALITY_AR", x: canvas.width - 1782, y: 1935, fontSize: 40 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_NATIONALITY_EN", x: canvas.width - 1782, y: 1975 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_LICENSE", x: canvas.width - 655, y: 2055, align: "right" },
+    { key: "ADDITIONAL_DRIVER_VEHICLE_TYPE_AR", x: canvas.width - 1270, y: 2030, fontSize: 40 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_VEHICLE_TYPE_EN", x: canvas.width - 1270, y: 2070 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_LICENSE_EXPIRY", x: canvas.width - 1835, y: 2055 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_POSITION_AR", x: canvas.width - 560, y: 2125, fontSize: 40 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_POSITION_EN", x: canvas.width - 560, y: 2160 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_WORKPLACE_AR", x: canvas.width - 1175, y: 2125, fontSize: 40  , align: "right"},
+    { key: "ADDITIONAL_DRIVER_WORKPLACE_EN", x: canvas.width - 1175, y: 2160 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_EMAIL", x: canvas.width - 1730, y: 2140 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_ADDRESS_AR", x: canvas.width - 535, y: 2220, fontSize: 40 , align: "right"},
+    { key: "ADDITIONAL_DRIVER_ADDRESS_EN", x: canvas.width - 535, y: 2255 , align: "right" },
+    { key: "ADDITIONAL_DRIVER_Notes", x: canvas.width - 535, y: 2330, fontSize: 40 , align: "right"},
+
+    // // سائق خاص  //
+    { key: "PRIVATE_DRIVER_NAME_AR", x: canvas.width - 420, y: 2455, color: "#0D5485", fontSize: 50, fontWeight: "600" , align: "right" },
+    { key: "PRIVATE_DRIVER_NAME_EN", x: canvas.width - 420, y: 2515, color: "#0D5485", fontSize: 45, fontWeight: "600", align: "right" },
+    { key: "PRIVATE_DRIVER_ID", x: canvas.width - 518, y: 2625 , align: "right"},
+    { key: "PRIVATE_DRIVER_ID_TYPE_AR", x: canvas.width - 1167, y: 2605, fontSize: 40 , align: "right"},
+    { key: "PRIVATE_DRIVER_ID_TYPE_EN", x: canvas.width - 1167, y: 2640 , align: "right"},
+    { key: "PRIVATE_DRIVER_NATIONALITY", x: canvas.width - 1785, y: 2600, fontSize: 40 , align: "right"},
+    { key: "PRIVATE_DRIVER_NATIONALITY_EN", x: canvas.width - 1785, y: 2640 , align: "right" },
+    { key: "PRIVATE_DRIVER_LICENSE", x: canvas.width - 655, y: 2715 , align: "right"},
+    { key: "PRIVATE_DRIVER_VEHICLE_TYPE_AR", x: canvas.width - 1270, y: 2695, fontSize: 40 , align: "right" },
+    { key: "PRIVATE_DRIVER_VEHICLE_TYPE_EN", x: canvas.width - 1270, y: 2732 , align: "right" },
+    { key: "PRIVATE_DRIVER_LICENSE_EXPIRY", x: canvas.width - 1835, y: 2715 , align: "right"},
+    // التوقيع //
+    { key: "SIGNATURE_AR", x: canvas.width - 280, y: 2830, fontSize: 40 , align: "right" },
+    { key: "SIGNATURE_EN", x: canvas.width - 280, y: 2870 , align: "right" },
+  ],
+  images: [
+      { content: data.images.EMPLOYEE_SIGN, x: canvas.width - 705, y: 2810, width: 160, height: 50  },
+      { content: data.images.TENANT_SIGN,  x: canvas.width - 500, y: 2910, width: 160, height: 50   },
+      { content: data.images.STAMP, x: canvas.width - 776, y: 2800, width: 190, height: 194 },
+      { content: data.images.Authentication_STAMP, x: canvas.width - 560, y: 2905, width: 190, height: 194 },
+      { content: data.images.QR, x: canvas.width - 2432, y: 2796, width: 190, height: 194 },
+  ],
+  textStyle: {
+      fontWeight: "normal",
+      fontSize: 35,
+      fontFamily: "Sakkal Majalla Regular",
+      textColor: "#000000",
+      textAlign: "right",
+  },
+};
+
+await document.fonts.load(`${fixedConfig.textStyle.fontWeight} ${fixedConfig.textStyle.fontSize}px ${fixedConfig.textStyle.fontFamily}`);
+
+// رسم النصوص
+
+const truncateText = (text, maxLength) => {
+  if (text.length <= maxLength) return text; 
+
+  const isArabic = /[\u0600-\u06FF]/.test(text); 
+  return isArabic 
+      ? "..." + text.substring(0, maxLength)  
+      : text.substring(0, maxLength) + "..."; 
+};
+
+
+const keysToTruncate = ["DRIVER_WORKPLACE_AR", "DRIVER_WORKPLACE_EN" , "ADDITIONAL_DRIVER_WORKPLACE_EN" ,"ADDITIONAL_DRIVER_WORKPLACE_AR"]; 
+
+fixedConfig.texts.forEach(({ key, x, y, align , color , fontSize , fontWeight}) => {
+
+  ctx.font =  `${fontWeight || fixedConfig.textStyle.fontWeight} ${fontSize || fixedConfig.textStyle.fontSize}px ${fixedConfig.textStyle.fontFamily} `;
+  ctx.fillStyle = color||fixedConfig.textStyle.textColor;
+  var content = data[key] || "";
+
+  if (keysToTruncate.includes(key)) {
+    content = truncateText(content, 36);
+}
+  const textWidth = ctx.measureText(content).width;
+  let adjustedX = x;
+
+  if (align === "right") adjustedX = x - textWidth;
+  else if (align === "center") adjustedX = x - textWidth / 2;
+
+  ctx.fillText(content, adjustedX, y);
+});
+
+// رسم الصور
+fixedConfig.images.forEach(({ content, x, y, width, height }) => {
+  // التحقق من ان الصورة موجوده
+  if (content) {    
+    ctx.drawImage(content, x, y, width, height);
+  } else {
+    console.warn("Image not found or not loaded, skipping.");
+  }
+});
+};
+
+
+CreateContract() 
