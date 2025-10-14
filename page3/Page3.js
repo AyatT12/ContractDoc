@@ -43,11 +43,11 @@ async function CreateReceiptPdf() {
     // الصور
     images: {
       background: "Page3 (2).png",
-      EMPLOYEE_SIGN: "../../images/Signature_08.png",
-      TENANT_SIGN: "../../images/Signature_08.png",
-      QR: "../../images/BananT.svg",
-      STAMP: "../../images/Stamp.png",
-      Authentication_STAMP: "../../images/ختم توثيق بنان.png",
+      EMPLOYEE_SIGN: "../images/Signature_08.png",
+      TENANT_SIGN: "../images/Signature_08.png",
+      QR: "../images/BananT.svg",
+      STAMP: "../images/Stamp.png",
+      Authentication_STAMP: "../images/ختم توثيق بنان.png",
     },
     // عناصر الجدول
     OptionsItems: [
@@ -568,3 +568,4 @@ const drawReceipt = async (canvas, data) => {
 };
 
 CreateReceiptPdf();
+
