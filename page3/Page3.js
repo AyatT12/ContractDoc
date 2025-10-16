@@ -278,9 +278,9 @@ const drawReceipt = async (canvas, data) => {
         align: "right",
       },
       // مرجع الاسعار 
-      { key: "Price_reference", x: canvas.width - 2170, y: 1155, align: "left",
+      { key: "Price_reference", x: canvas.width - 2170, y: 1190, align: "left",
         color: "#0D5485",
-        fontSize: 28},
+        fontSize: 20},
       // 
       { key: "fire_Liability", x: canvas.width - 600, y: 1155, align: "right" },
       {
@@ -568,4 +568,5 @@ const drawReceipt = async (canvas, data) => {
 };
 
 CreateReceiptPdf();
+
 
